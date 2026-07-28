@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reencuentro con la Guitarra</title>
+    <title id="page-title">Reencuentro con la Guitarra</title>
     <!-- Importamos fuentes elegantes desde Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -27,13 +27,33 @@
             max-width: 520px;
             width: 100%;
             text-align: left;
+            position: relative;
+        }
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: transparent;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .lang-switch:hover {
+            background: #d4af37;
+            color: #0d0d0d;
         }
         h1 {
             font-family: 'Cormorant Garamond', serif;
             color: #d4af37; /* Tono dorado elegante */
             font-size: 2.4rem;
             line-height: 1.2;
-            margin-top: 0;
+            margin-top: 10px;
             margin-bottom: 20px;
             font-weight: 700;
             letter-spacing: 0.5px;
@@ -75,13 +95,51 @@
 <body>
 
 <div class="card">
-    <h1>Reencuentro con la Guitarra</h1>
-    <p>Un espacio exclusivo y diseñado especialmente para quienes tuvieron como prioridad estudiar <span class="highlight">guitarra clásica</span>, pero que el camino de la vida llevó hacia otras áreas profesionales o personales.</p>
-    <p>Es momento de <span class="highlight">retomar tu pasión</span> con una guía experta, un rigor técnico adaptado a tu nivel actual y un enfoque respetuoso de tu experiencia previa.</p>
+    <!-- Botón para cambiar el idioma -->
+    <button class="lang-switch" id="langBtn" onclick="toggleLanguage()">English</button>
+
+    <h1 id="main-title">Reencuentro con la Guitarra</h1>
+    <p id="text-1">Un espacio exclusivo y diseñado especialmente para quienes tuvieron como prioridad estudiar <span class="highlight" id="hl-1">guitarra clásica</span>, pero que el camino de la vida llevó hacia otras áreas profesionales o personales.</p>
+    <p id="text-2">Es momento de <span class="highlight" id="hl-2">retomar tu pasión</span> con una guía experta, un rigor técnico adaptado a tu nivel actual y un enfoque respetuoso de tu experiencia previa.</p>
     
     <!-- Botón elegante con enlace directo a WhatsApp Business -->
-    <a href="https://wa.me/56987767767?text=Hola,%20deseo%20conversar%20sobre%20las%20sesiones%20de%20reencuentro%20con%20la%20guitarra" class="cta-button" target="_blank">Iniciar Conversación de Admisión</a>
+    <a href="https://wa.me/56987767767?text=Hola,%20deseo%20conversar%20sobre%20las%20sesiones%20de%20reencuentro%20con%20la%20guitarra" class="cta-button" id="cta-link" target="_blank">Iniciar Conversación de Admisión</a>
 </div>
+
+<script>
+    let currentLang = 'es';
+
+    function toggleLanguage() {
+        const langBtn = document.getElementById('langBtn');
+        const pageTitle = document.getElementById('page-title');
+        const mainTitle = document.getElementById('main-title');
+        const text1 = document.getElementById('text-1');
+        const text2 = document.getElementById('text-2');
+        const ctaLink = document.getElementById('cta-link');
+
+        if (currentLang === 'es') {
+            currentLang = 'en';
+            document.documentElement.lang = 'en';
+            langBtn.textContent = 'Español';
+            pageTitle.textContent = 'Reunion with the Guitar';
+            mainTitle.textContent = 'Reunion with the Guitar';
+            text1.innerHTML = 'An exclusive space specially designed for those who prioritized studying <span class="highlight">classical guitar</span>, but whose life path led them toward other professional or personal areas.';
+            text2.innerHTML = 'It is time to <span class="highlight">reignite your passion</span> with expert guidance, technical rigor adapted to your current level, and a respectful approach to your prior experience.';
+            ctaLink.textContent = 'Start Admission Conversation';
+            ctaLink.href = 'https://wa.me/56987767767?text=Hello,%20I%20would%20like%20to%20discuss%20the%20reunion%20with%20the%20guitar%20sessions';
+        } else {
+            currentLang = 'es';
+            document.documentElement.lang = 'es';
+            langBtn.textContent = 'English';
+            pageTitle.textContent = 'Reencuentro con la Guitarra';
+            mainTitle.textContent = 'Reencuentro con la Guitarra';
+            text1.innerHTML = 'Un espacio exclusivo y diseñado especialmente para quienes tuvieron como prioridad estudiar <span class="highlight">guitarra clásica</span>, pero que el camino de la vida llevó hacia otras áreas profesionales o personales.';
+            text2.innerHTML = 'Es momento de <span class="highlight">retomar tu pasión</span> con una guía experta, un rigor técnico adaptado a tu nivel actual y un enfoque respetuoso de tu experiencia previa.';
+            ctaLink.textContent = 'Iniciar Conversación de Admisión';
+            ctaLink.href = 'https://wa.me/56987767767?text=Hola,%20deseo%20conversar%20sobre%20las%20sesiones%20de%20reencuentro%20con%20la%20guitarra';
+        }
+    }
+</script>
 
 </body>
 </html>
